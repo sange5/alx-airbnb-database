@@ -1,4 +1,4 @@
--- INNER JOIN to retrieve all bookings and respective users
+-- INNER JOIN to retrieve all bookings and respective users, ordered by booking date
 SELECT 
     bookings.booking_id,
     bookings.property_id,
@@ -10,9 +10,11 @@ FROM
 INNER JOIN 
     users
 ON 
-    bookings.user_id = users.user_id;
+    bookings.user_id = users.user_id
+ORDER BY 
+    bookings.booking_date ASC;
 
--- LEFT JOIN to retrieve all properties and their reviews, including properties with no reviews
+-- LEFT JOIN to retrieve all properties and their reviews, including properties with no reviews, ordered by property name
 SELECT 
     properties.property_id,
     properties.property_name,
@@ -23,9 +25,11 @@ FROM
 LEFT JOIN 
     reviews
 ON 
-    properties.property_id = reviews.property_id;
+    properties.property_id = reviews.property_id
+ORDER BY 
+    properties.property_name ASC;
 
--- FULL OUTER JOIN to retrieve all users and all bookings
+-- FULL OUTER JOIN to retrieve all users and all bookings, ordered by username
 SELECT 
     users.user_id,
     users.username,
@@ -36,5 +40,6 @@ FROM
 FULL OUTER JOIN 
     bookings
 ON 
-    users.user_id = bookings.user_id;
-
+    users.user_id = bookings.user_id
+ORDER BY 
+    users.username ASC;
