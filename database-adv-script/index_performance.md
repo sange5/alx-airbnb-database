@@ -30,4 +30,31 @@ This document outlines the creation of indexes on the **User**, **Booking**, and
   - **Execution Plan**: Index scan, significantly faster execution time.
 
 ## Conclusion
-Indexes have been successfully applied to high-usage columns to optimize query performance. The `EXPLAIN` command showed improved performance with index scans instead of full table scans. These indexes will help reduce query execution time, especially for large datasets.
+Indexes have been successfully applied to high-usage columns to optimize query performance. The `EXPLAIN` command showed improved performance with index scans instead of full table scans. These indexes will help reduce query execution time, especially for large datasets. 
+-- Index for user_id in the User table (for faster lookups and joins)
+CREATE INDEX idx_user_id ON users (user_id);
+
+-- Index for email in the User table (if email is frequently searched)
+CREATE INDEX idx_user_email ON users (email);
+
+-- Index for user_id in the Booking table (for faster lookups and joins with the User table)
+CREATE INDEX idx_booking_user_id ON bookings (user_id);
+
+-- Index for property_id in the Booking table (for faster lookups and joins with the Property table)
+CREATE INDEX idx_booking_property_id ON bookings (property_id);
+
+-- Index for booking_date in the Booking table (if filtering or sorting by date is common)
+CREATE INDEX idx_booking_date ON bookings (booking_date);
+
+-- Index for property_id in the Property table (for faster lookups and joins with the Booking table)
+CREATE INDEX idx_property_id ON properties (property_id);
+
+-- Index for owner_id in the Property table (if querying by owner is frequent)
+CREATE INDEX idx_property_owner_id ON properties (owner_id);
+
+-- Index for location and price in the Property table (if filtering by location or price is common)
+CREATE INDEX idx_property_location_price ON properties (location, price);
+
+-- Index for rating in the Property table (if sorting by rating is common)
+CREATE INDEX idx_property_rating ON properties (rating);
+
