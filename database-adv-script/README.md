@@ -1,46 +1,20 @@
--- INNER JOIN to retrieve all bookings and respective users, ordered by booking date
-SELECT 
-    bookings.booking_id,
-    bookings.property_id,
-    bookings.booking_date,
-    users.user_id,
-    users.username
-FROM 
-    bookings
-INNER JOIN 
-    users
-ON 
-    bookings.user_id = users.user_id
-ORDER BY 
-    bookings.booking_date ASC;
+# SQL Joins Queries
 
--- LEFT JOIN to retrieve all properties and their reviews, including properties with no reviews, ordered by property name
-SELECT 
-    properties.property_id,
-    properties.property_name,
-    reviews.review_id,
-    reviews.review_text
-FROM 
-    properties
-LEFT JOIN 
-    reviews
-ON 
-    properties.property_id = reviews.property_id
-ORDER BY 
-    properties.property_name ASC;
+This repository contains SQL queries that demonstrate the use of different types of joins to retrieve data from an Airbnb-like database.
 
--- FULL OUTER JOIN to retrieve all users and all bookings, ordered by username
-SELECT 
-    users.user_id,
-    users.username,
-    bookings.booking_id,
-    bookings.property_id
-FROM 
-    users
-FULL OUTER JOIN 
-    bookings
-ON 
-    users.user_id = bookings.user_id
-ORDER BY 
-    users.username ASC;
+## Queries:
 
+### 1. **INNER JOIN**
+- Retrieves all bookings and the respective users who made those bookings.
+- Only returns records where there is a matching user for each booking.
+
+### 2. **LEFT JOIN**
+- Retrieves all properties and their reviews, including properties with no reviews.
+- If a property does not have a review, the result will show `NULL` for the review fields.
+
+### 3. **FULL OUTER JOIN**
+- Retrieves all users and all bookings, even if a user has no booking or a booking is not linked to a user.
+- If there is no match between users and bookings, `NULL` values will appear for the missing data.
+
+## Usage:
+To execute these queries, simply run the `joins_queries.sql` file in your SQL database management system.
