@@ -51,6 +51,5 @@
 4. **Booking → Payment**: One-to-One  
    - A Booking has one Payment.
 
-## ER Diagram
-![ERD Diagram](path/to/erd_diagram.png)
+
  
