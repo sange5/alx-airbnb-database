@@ -1,0 +1,1 @@
+# Airbnb Database Seeding Script 
