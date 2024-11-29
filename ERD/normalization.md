@@ -1,4 +1,4 @@
- 
+# normalization.md 
 # Database Normalization
 
 ## First Normal Form (1NF)
